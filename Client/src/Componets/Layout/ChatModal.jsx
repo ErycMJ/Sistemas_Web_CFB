@@ -1,56 +1,29 @@
-import { useState } from "react"
-import axios from "axios"
-import string from "../../String"
+import { useChatModal } from "../../hooks/layout"
 
 const ChatModal = ({ isOpen, onClose, isLoggedIn }) => {
-  const [activeTab, setActiveTab] = useState("support")
-  const [message, setMessage] = useState("")
-  const [chatHistory, setChatHistory] = useState([])
-  const [loading, setLoading] = useState(false)
+  const {
+    activeTab,
+    setActiveTab,
+    message,
+    setMessage,
+    chatHistory,
+    loading,
+    handleSendMessage,
+  } = useChatModal(isLoggedIn)
 
   if (!isOpen) return null
 
-  const handleSendMessage = async () => {
-    if (activeTab === "ia" && isLoggedIn) {
-      setLoading(true)
-
-      try {
-        const response = await axios.post(`${string}/chat/send`, {
-          message,
-        })
-
-        // Atualiza o histórico de mensagens
-        setChatHistory([
-          ...chatHistory,
-          { user: message, ai: response.data.response },
-        ])
-        setMessage("")
-      } catch (error) {
-        console.error("Error sending message:", error)
-      } finally {
-        setLoading(false)
-      }
-    } else {
-      // Lógica para suporte
-      console.log("Enviando mensagem para suporte:", message)
-      setMessage("")
-    }
-  }
-
   return (
     <div className="fixed bottom-4 right-4 z-50 flex flex-col items-end">
-      {/* Chat Modal */}
       <div className="bg-white p-4 rounded-lg shadow-lg w-80 mb-2">
-        <h2 className="text-xl font-bold mb-4">Chat</h2>
+        <h2 className="text-xl font-bold mb-4">Atendimento</h2>
 
-        {/* Tabs */}
         <div className="flex border-b mb-4">
           <button
-            className={`px-4 py-2 ${
-              activeTab === "support"
+            className={`px-4 py-2 ${activeTab === "support"
                 ? "border-b-2 border-green-600 text-green-600"
                 : ""
-            }`}
+              }`}
             onClick={() => setActiveTab("support")}
           >
             Suporte
@@ -58,19 +31,18 @@ const ChatModal = ({ isOpen, onClose, isLoggedIn }) => {
 
           {isLoggedIn && (
             <button
-              className={`px-4 py-2 ml-2 ${
-                activeTab === "ia"
+              className={`px-4 py-2 ml-2 ${activeTab === "ia"
                   ? "border-b-2 border-green-600 text-green-600"
                   : ""
-              }`}
+                }`}
               onClick={() => setActiveTab("ia")}
             >
-              Insights
+              Assistente IA
             </button>
           )}
         </div>
 
-        
+
         {activeTab === "ia" && isLoggedIn && (
           <div>
             <div className="h-40 overflow-y-auto border p-2 mb-2">
@@ -105,7 +77,6 @@ const ChatModal = ({ isOpen, onClose, isLoggedIn }) => {
         )}
       </div>
 
-      {/* Chat Button */}
       <button
         className="bottom-4 right-4 bg-green-600 text-white p-3 rounded-full shadow-lg"
         onClick={onClose}
@@ -130,3 +101,9 @@ const ChatModal = ({ isOpen, onClose, isLoggedIn }) => {
 }
 
 export default ChatModal
+
+ChatModal.propTypes = {
+  isOpen: () => null,
+  onClose: () => null,
+  isLoggedIn: () => null,
+}

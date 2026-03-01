@@ -1,4 +1,3 @@
-// controllers/chatController.js
 import { model, generationConfig } from "../Middlewares/geminiConfig.js"
 
 const sendMessageToAI = async (req, res) => {

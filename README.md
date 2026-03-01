@@ -1,6 +1,6 @@
-# CFB
+# CFP
 
-Cadastro Financeiro de Barbearias, consiste em um software responsável pela gestão e controle financeiro de barbearias.   
+Cadastro Financeiro Pessoal, consiste em um software responsável pela gestão e controle financeiro de barbearias.   
 
 ## 🚀 Começando
 

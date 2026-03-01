@@ -1,109 +1,25 @@
-import { useState } from "react"
-import axios from "axios"
-import { useDispatch, useSelector } from "react-redux"
-import { updateUser } from "../../Redux/User/userSlice"
-import toast from "react-hot-toast"
-import string from "../../String"
+import { useProfile } from "../../hooks/private"
 
 export const Profile = () => {
-  const dispatch = useDispatch()
-  const { currentUser } = useSelector((state) => state.user)
-  const [username, setUsername] = useState(currentUser.user.username)
-  const [transactionData, setTransactionData] = useState("") // Estado para dados de transações
-  const [transactionType, setTransactionType] = useState("income") // Novo estado para tipo de transação
-
-  const handleUpdateProfileDetails = async () => {
-    try {
-      const { data } = await axios.put(
-        `${string}/user/updateprofile`,
-        { username },
-        {
-          withCredentials: true,
-        }
-      )
-      dispatch(updateUser(data))
-      toast.success(data.message)
-    } catch (error) {
-      toast.error(error.response.data.message)
-    }
-  }
-
-  const handleImportTransactions = async () => {
-    const lines = transactionData.trim().split("\n")
-    const transactions = []
-    const errorLines = []
-
-    // Loop para processar cada linha, ignorando o cabeçalho se for detectado
-    for (const [index, line] of lines.entries()) {
-      if (
-        index === 0 &&
-        line.toLowerCase().includes("descrição") &&
-        line.toLowerCase().includes("valor") &&
-        line.toLowerCase().includes("data")
-      ) {
-        continue // Ignora o cabeçalho e passa para a próxima linha
-      }
-
-      const [description, value, dateTime] = line.split("\t")
-      const amount = parseFloat(
-        value.replace("R$", "").replace(",", ".").trim()
-      )
-
-      // Separando data e hora
-      const [date, time] = dateTime.trim().split(" ")
-      const dateParts = date.split("/")
-
-      // Verificando a validade da data antes de converter
-      if (dateParts.length !== 3) {
-        errorLines.push(index + 1)
-        continue
-      }
-
-      // Criando a data sem incluir a hora
-      const parsedDate = new Date(
-        `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}T00:00:00`
-      )
-
-      // Validando os dados da transação
-      if (!description || isNaN(amount) || isNaN(parsedDate.getTime())) {
-        errorLines.push(index + 1)
-        continue
-      }
-
-      transactions.push({
-        type: transactionType, // Usa o tipo de transação selecionado
-        category: "66dc68fbc3f858aa58b6465d",
-        note: description.trim(),
-        amount,
-        currency: "BRL",
-        date: parsedDate.toISOString().split("T")[0], // Apenas a data em formato ISO
-      })
-    }
-
-    // Exibindo mensagens de erro se houver linhas com problemas
-    if (errorLines.length) {
-      toast.error(`Erro nas linhas: ${errorLines.join(", ")}`)
-      return
-    }
-
-    try {
-      const { data } = await axios.post(
-        `${string}/transaction/import`,
-        { transactions },
-        {
-          withCredentials: true,
-        }
-      )
-      toast.success(data.message)
-      setTransactionData("") // Limpar campo de texto após importação bem-sucedida
-    } catch (error) {
-      toast.error(
-        error.response
-          ? error.response.data.message
-          : "Erro ao importar transações"
-      )
-    }
-  }
+  const {
+    username,
+    setUsername,
+    transactionData,
+    setTransactionData,
+    transactionType,
+    setTransactionType,
+    categories,
+    importCategory,
+    setImportCategory,
+    handleImportFile,
+    templatePreviewHeaders,
+    templatePreviewRows,
+    importTemplateText,
+    importPreview,
+    setImportPreview,
+    handleUpdateProfileDetails,
+    handleImportTransactions,
+  } = useProfile()
 
   return (
     <>
@@ -119,7 +35,7 @@ export const Profile = () => {
             <input
               type="text"
               value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              onChange={(event) => setUsername(event.target.value)}
               className="w-full px-3 py-2 border border-gray-300 rounded-md"
             />
           </div>
@@ -131,20 +47,18 @@ export const Profile = () => {
           </button>
         </div>
 
-        {/* Seção de Importação de Transações */}
         <div className="import-transactions mt-10">
           <h3 className="text-2xl font-semibold text-center mb-5 text-green-800">
-            Importar Transações
+            Importar transações
           </h3>
 
-          {/* Seletor para tipo de transação */}
           <div className="transaction-type-selector mb-5">
             <label className="block text-lg font-medium mb-2 text-green-800">
-              Tipo de Transação
+              Tipo de transação
             </label>
             <select
               value={transactionType}
-              onChange={(e) => setTransactionType(e.target.value)}
+              onChange={(event) => setTransactionType(event.target.value)}
               className="w-full px-3 py-2 border border-gray-300 rounded-md"
             >
               <option value="income">Receita</option>
@@ -152,22 +66,125 @@ export const Profile = () => {
             </select>
           </div>
 
+          <div className="transaction-type-selector mb-5">
+            <label className="block text-lg font-medium mb-2 text-green-800">
+              Categoria para importação
+            </label>
+            <select
+              value={importCategory}
+              onChange={(event) => setImportCategory(event.target.value)}
+              className="w-full px-3 py-2 border border-gray-300 rounded-md"
+            >
+              <option value="">Selecione uma categoria</option>
+              {categories.map((category) => (
+                <option key={category._id} value={category._id}>
+                  {category.categoryName}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="mb-5">
+            <label className="block text-lg font-medium mb-2 text-green-800">
+              Arquivo de importação (.csv ou .txt)
+            </label>
+            <input
+              type="file"
+              accept=".csv,.txt"
+              onChange={handleImportFile}
+              className="w-full px-3 py-2 border border-gray-300 rounded-md bg-white"
+            />
+          </div>
+
+          <div className="mb-5 p-3 bg-white rounded-md border border-green-200">
+            <div className="flex items-center justify-between mb-2">
+              <h4 className="text-lg font-semibold text-green-800">Modelo CSV (visualização)</h4>
+              <div className="flex gap-2">
+                <button
+                  onClick={() => setTransactionData(importTemplateText)}
+                  className="text-sm bg-green-700 text-white px-3 py-1 rounded-md hover:bg-green-600"
+                >
+                  Usar modelo de exemplo
+                </button>
+                <button
+                  onClick={() => setImportPreview([])}
+                  className="text-sm bg-gray-500 text-white px-3 py-1 rounded-md hover:bg-gray-400"
+                >
+                  Limpar visualização
+                </button>
+              </div>
+            </div>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm text-left border border-gray-200">
+                <thead className="bg-green-100 text-green-900">
+                  <tr>
+                    {templatePreviewHeaders.map((header) => (
+                      <th key={header} className="px-3 py-2 border-b border-gray-200">
+                        {header}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {templatePreviewRows.map((row, rowIndex) => (
+                    <tr key={`preview-row-${rowIndex}`} className="bg-white">
+                      {templatePreviewHeaders.map((header) => (
+                        <td key={`${header}-${rowIndex}`} className="px-3 py-2 border-b border-gray-100">
+                          {row[header]}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          {importPreview.length > 0 && (
+            <div className="mb-5 p-3 bg-white rounded-md border border-green-200">
+              <h4 className="text-lg font-semibold text-green-800 mb-2">
+                Visualização de transações detectadas ({importPreview.length})
+              </h4>
+              <p className="text-xs text-gray-600 mb-2">
+                Conciliação automática aplicada por nome de categoria no texto da descrição.
+              </p>
+              <div className="overflow-x-auto max-h-64">
+                <table className="w-full text-sm text-left border border-gray-200">
+                  <thead className="bg-green-100 text-green-900 sticky top-0">
+                    <tr>
+                      <th className="px-3 py-2 border-b border-gray-200">Descrição</th>
+                      <th className="px-3 py-2 border-b border-gray-200">Valor</th>
+                      <th className="px-3 py-2 border-b border-gray-200">Data</th>
+                      <th className="px-3 py-2 border-b border-gray-200">Moeda</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {importPreview.slice(0, 50).map((item, index) => (
+                      <tr key={`import-preview-${index}`} className="bg-white">
+                        <td className="px-3 py-2 border-b border-gray-100">{item.note}</td>
+                        <td className="px-3 py-2 border-b border-gray-100">{item.amount}</td>
+                        <td className="px-3 py-2 border-b border-gray-100">{item.date}</td>
+                        <td className="px-3 py-2 border-b border-gray-100">{item.currency}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
+
           <textarea
             value={transactionData}
-            onChange={(e) => setTransactionData(e.target.value)}
+            onChange={(event) => setTransactionData(event.target.value)}
             rows={10}
-            placeholder="Cole os dados aqui como no exemplo a segior (Descrição	Valor	Data
-Comanda: 78913240	R$ 10,00	13/01/2024
-Comanda: 79997072	R$ 10,00	26/01/2024
-Comanda: 86102210	R$ 5,00	19/03/2024
-Comanda: 89129403	R$ 5,00	15/04/2024)"
+            placeholder="Cole os dados CSV/TXT no formato: descricao;valor;data;categoria;moeda"
             className="w-full border border-gray-300 rounded-md p-2 mb-5"
           />
           <button
             onClick={handleImportTransactions}
             className="w-full bg-green-800 text-white py-2 rounded-md hover:bg-green-700"
           >
-            Importar Transações
+            Importar transações
           </button>
         </div>
       </div>

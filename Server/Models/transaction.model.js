@@ -26,7 +26,8 @@ const transactionSchema = new mongoose.Schema({
   },
   currency: {
     type: String,
-    required: true
+    required: true,
+    default: "BRL"
   },
   recurrence: {
     type: String,
