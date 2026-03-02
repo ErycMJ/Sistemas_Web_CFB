@@ -7,7 +7,7 @@ const TransactionDeleteModal = ({ isOpen, formRef, onCancel, onConfirm }) => {
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
       <div
         ref={formRef}
-        className="bg-white p-6 rounded-lg shadow-lg z-50 w-full max-w-md"
+        className="bg-white p-6 rounded-md shadow-lg z-50 w-full max-w-md"
       >
         <h3 className="mb-4 text-lg font-medium text-green-800">Excluir transação</h3>
         <p>Tem certeza de que deseja excluir esta transação?</p>

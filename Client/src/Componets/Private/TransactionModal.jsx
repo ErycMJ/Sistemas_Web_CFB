@@ -22,7 +22,7 @@ const TransactionModal = () => {
       <div className="bottom-0 p-4 mt-12">
         <button
           onClick={() => setShowAddTransactionForm(true)}
-          className="w-full flex items-center justify-center text-white bg-green-600 hover:bg-green-500 p-3 rounded-lg transition-all duration-300"
+          className="w-full flex items-center justify-center text-white bg-green-600 hover:bg-green-500 p-3 rounded-md transition-all duration-300"
         >
           <FaPlus className="text-2xl" />
         </button>
@@ -33,7 +33,7 @@ const TransactionModal = () => {
           ref={formRef}
           className="bg-black bg-opacity-50 fixed inset-0 flex justify-center items-center z-50"
         >
-          <div className="bg-white p-6 rounded-lg shadow-lg">
+          <div className="bg-white p-6 rounded-md shadow-lg">
             <h3 className="text-lg font-medium mb-4">Adicionar transação</h3>
             <div className="flex justify-between">
               <div className="mb-4">
@@ -185,13 +185,13 @@ const TransactionModal = () => {
             <div className="flex justify-end">
               <button
                 onClick={handleAddTransaction}
-                className="bg-green-800 px-5 py-3 rounded-3xl text-white hover:bg-green-700 mr-2"
+                className="bg-green-800 px-5 py-3 rounded-md text-white hover:bg-green-700 mr-2"
               >
                 Adicionar
               </button>
               <button
                 onClick={() => setShowAddTransactionForm(false)}
-                className="bg-red-600 px-5 py-3 rounded-3xl text-white hover:bg-red-500"
+                className="bg-red-600 px-5 py-3 rounded-md text-white hover:bg-red-500"
               >
                 Cancelar
               </button>

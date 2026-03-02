@@ -15,7 +15,7 @@ const ChatModal = ({ isOpen, onClose, isLoggedIn }) => {
 
   return (
     <div className="fixed bottom-4 right-4 z-50 flex flex-col items-end">
-      <div className="bg-white p-4 rounded-lg shadow-lg w-80 mb-2">
+      <div className="bg-white p-4 rounded-md shadow-lg w-80 mb-2">
         <h2 className="text-xl font-bold mb-4">Atendimento</h2>
 
         <div className="flex border-b mb-4">

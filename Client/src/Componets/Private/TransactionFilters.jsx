@@ -48,7 +48,7 @@ const TransactionFilters = ({
         <span className="text-gray-700 font-bold">{formatCurrency(amountRange[0])}</span>
         <ReactSlider
           className="w-48 h-4 mx-2"
-          thumbClassName="w-4 h-4 bg-green-800 rounded-full cursor-pointer"
+          thumbClassName="w-4 h-4 bg-green-800 rounded-md cursor-pointer"
           trackClassName="h-1 bg-gray-300 my-2"
           min={min}
           max={max}

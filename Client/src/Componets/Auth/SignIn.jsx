@@ -8,25 +8,25 @@ const SignIn = () => {
     }
     return (
         <>
-            <div className='p-7 max-w-lg mx-auto bg-green-200 my-10 rounded-2xl'>
+            <div className='p-7 max-w-lg mx-auto bg-green-200 my-10 rounded-md'>
                 <h1 className='text-3xl text-center text-green-800 font-semibold my-5'>Entrar</h1>
                 <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
                     <input
                         type='email'
                         placeholder='E-mail'
-                        className='border p-3 rounded-lg text-green-900 font-medium'
+                        className='border p-3 rounded-md text-green-900 font-medium'
                         id='email'
                         onChange={handleChange}
                     />
                     <input
                         type='password'
                         placeholder='Senha'
-                        className='border p-3 rounded-lg text-green-900 font-medium'
+                        className='border p-3 rounded-md text-green-900 font-medium'
                         id='password'
                         onChange={handleChange}
                     />
                     <button type='submit'
-                        className='bg-green-800 text-white p-3 rounded-lg text-2xl font-bold hover:opacity-90 disabled:opacity-80 my-2'
+                        className='bg-green-800 text-white p-3 rounded-md text-2xl font-bold hover:opacity-90 disabled:opacity-80 my-2'
                     >
                         Entrar
                     </button>

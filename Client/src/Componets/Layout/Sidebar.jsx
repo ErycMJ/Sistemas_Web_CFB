@@ -37,7 +37,7 @@ const Sidebar = () => {
           <li>
             <Link
               to="/dashboard"
-              className="flex items-center space-x-2 text-white hover:bg-green-600 px-6 py-3 rounded-lg transition-all duration-300"
+              className="flex items-center space-x-2 text-white hover:bg-green-600 px-6 py-3 rounded-md transition-all duration-300"
             >
               <MdDashboard className="text-2xl" />
               <span className={`${isMinimized ? "hidden" : "block"}`}>
@@ -48,7 +48,7 @@ const Sidebar = () => {
           <li>
             <Link
               to="/category"
-              className="flex items-center space-x-2 text-white hover:bg-green-600 px-6 py-3 rounded-lg transition-all duration-300"
+              className="flex items-center space-x-2 text-white hover:bg-green-600 px-6 py-3 rounded-md transition-all duration-300"
             >
               <BiSolidCategory className="text-2xl" />
               <span className={`${isMinimized ? "hidden" : "block"}`}>
@@ -59,13 +59,13 @@ const Sidebar = () => {
           <li className="relative">
             <Link
               to="/transaction"
-              className="flex items-center space-x-2 text-white hover:bg-green-600 px-6 py-3 rounded-lg transition-all duration-300"
+              className="flex items-center space-x-2 text-white hover:bg-green-600 px-6 py-3 rounded-md transition-all duration-300"
             >
               <FaExchangeAlt className="text-2xl" />
               <span
                 className='relative'
               >
-                <span className="absolute top-0 right-0 h-2 w-2 sm:h-3 sm:w-3 bg-yellow-500 rounded-full"></span>
+                <span className="absolute top-0 right-0 h-2 w-2 sm:h-3 sm:w-3 bg-yellow-500 rounded-md"></span>
               </span>
               <span className={`${isMinimized ? "hidden" : "block"}`}>
                 Transações
@@ -75,7 +75,7 @@ const Sidebar = () => {
           <li>
             <Link
               to="/goals-limits"
-              className="flex items-center space-x-2 text-white hover:bg-green-600 px-6 py-3 rounded-lg transition-all duration-300"
+              className="flex items-center space-x-2 text-white hover:bg-green-600 px-6 py-3 rounded-md transition-all duration-300"
             >
               <MdOutlineAddTask className="text-2xl" />
               <span className={`${isMinimized ? "hidden" : "block"}`}>

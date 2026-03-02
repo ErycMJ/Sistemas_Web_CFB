@@ -23,7 +23,7 @@ export const Profile = () => {
 
   return (
     <>
-      <div className="max-w-xl mx-auto mt-10 p-5 bg-green-50 shadow-xl rounded-lg m-10">
+      <div className="max-w-xl mx-auto mt-10 p-5 bg-green-50 shadow-xl rounded-md m-10">
         <h2 className="text-3xl font-semibold text-center mb-5 text-green-800">
           Perfil
         </h2>

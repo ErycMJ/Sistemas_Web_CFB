@@ -82,7 +82,7 @@ const Navbar = () => {
                 >
                   <FaBell className="text-2xl text-green-800 mt-1" />
                   {notifications > 0 && (
-                    <span className="absolute top-0 right-0 h-4 w-4 bg-red-600 text-white rounded-full text-xs flex items-center justify-center">
+                    <span className="absolute top-0 right-0 h-4 w-4 bg-red-600 text-white rounded-md text-xs flex items-center justify-center">
                       {notifications}
                     </span>
                   )}
@@ -101,7 +101,7 @@ const Navbar = () => {
                           </p>
                           <Link
                             to="/notifications"
-                            className="flex rounded-lg px-4 py-2 text-md font-medium text-green-800 hover:bg-green-100 hover:text-gray-700"
+                            className="flex rounded-md px-4 py-2 text-md font-medium text-green-800 hover:bg-green-100 hover:text-gray-700"
                             role="menuitem"
                             onClick={() => setNotificationDropdownOpen(false)}
                           >
@@ -126,7 +126,7 @@ const Navbar = () => {
                   <div className="py-1" role="none">
                     <Link
                       to="/profile"
-                      className="flex rounded-lg px-4 py-2 text-md font-medium text-green-800 hover:bg-green-100 hover:text-gray-700"
+                      className="flex rounded-md px-4 py-2 text-md font-medium text-green-800 hover:bg-green-100 hover:text-gray-700"
                       role="menuitem"
                       onClick={() => setDropdownOpen(false)}
                     >
@@ -135,7 +135,7 @@ const Navbar = () => {
                     </Link>
                     <Link
                       to="/signout"
-                      className="flex rounded-lg px-4 py-2 text-md font-medium text-green-800 hover:bg-green-100 hover:text-gray-700"
+                      className="flex rounded-md px-4 py-2 text-md font-medium text-green-800 hover:bg-green-100 hover:text-gray-700"
                       role="menuitem"
                       onClick={() => setDropdownOpen(false)}
                     >
@@ -152,12 +152,12 @@ const Navbar = () => {
           ) : (
             <>
               <Link to="/signup">
-                <div className="bg-green-800 px-5 py-3 rounded-3xl text-white mx-2 hover:bg-green-700">
+                <div className="bg-green-800 px-5 py-3 rounded-md text-white mx-2 hover:bg-green-700">
                   <button className="text-lg">Cadastrar</button>
                 </div>
               </Link>
               <Link to="/signin">
-                <div className="bg-green-800 px-5 py-3 rounded-3xl text-white mx-2 hover:bg-green-700">
+                <div className="bg-green-800 px-5 py-3 rounded-md text-white mx-2 hover:bg-green-700">
                   <button className="text-lg">Entrar</button>
                 </div>
               </Link>

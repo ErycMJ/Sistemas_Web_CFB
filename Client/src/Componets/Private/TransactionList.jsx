@@ -21,7 +21,7 @@ const TransactionList = ({ transactions, getCategoryNameById, onEdit, onDelete }
       {transactions.map((transaction) => (
         <div
           key={transaction._id}
-          className="bg-green-50 p-4 rounded-lg shadow-lg flex items-center justify-between"
+          className="bg-green-50 p-4 rounded-md shadow-lg flex items-center justify-between"
         >
           <div className="flex-1">
             <div className="flex space-x-4 mb-2">
@@ -42,13 +42,12 @@ const TransactionList = ({ transactions, getCategoryNameById, onEdit, onDelete }
           </div>
           <div className="flex items-center space-x-4">
             <p
-              className={`text-lg font-bold ${
-                transaction.type === "income"
+              className={`text-lg font-bold ${transaction.type === "income"
                   ? "text-green-500"
                   : transaction.type === "expense"
-                  ? "text-red-500"
-                  : "text-black"
-              }`}
+                    ? "text-red-500"
+                    : "text-black"
+                }`}
             >
               {formatTransactionAmount(transaction.amount, transaction.currency)}
             </p>

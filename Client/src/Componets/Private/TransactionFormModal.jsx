@@ -29,7 +29,7 @@ const TransactionFormModal = ({
       ref={formRef}
       className="bg-black bg-opacity-50 fixed inset-0 flex justify-center items-center z-50"
     >
-      <div className="bg-white p-6 rounded-lg shadow-lg">
+      <div className="bg-white p-6 rounded-md shadow-lg">
         <h3 className="text-lg font-medium mb-4">{title}</h3>
         <div className="flex justify-between">
           <div className="mb-4">
@@ -188,13 +188,13 @@ const TransactionFormModal = ({
         <div className="flex justify-end">
           <button
             onClick={onSubmit}
-            className="bg-green-800 px-5 py-3 rounded-3xl text-white hover:bg-green-700 mr-2"
+            className="bg-green-800 px-5 py-3 rounded-md text-white hover:bg-green-700 mr-2"
           >
             {submitLabel}
           </button>
           <button
             onClick={onCancel}
-            className="bg-red-600 px-5 py-3 rounded-3xl text-white hover:bg-red-500"
+            className="bg-red-600 px-5 py-3 rounded-md text-white hover:bg-red-500"
           >
             Cancelar
           </button>

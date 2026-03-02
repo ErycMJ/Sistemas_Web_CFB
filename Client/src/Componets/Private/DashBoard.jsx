@@ -30,10 +30,10 @@ const Dashboard = () => {
   } = useDashboard()
 
   return (
-    <div className="p-6 m-4 bg-white rounded-lg shadow-lg">
+    <div className="p-6 m-4 bg-white rounded-md shadow-lg">
       <h2 className="text-3xl font-bold text-green-800 mb-4">Dashboard</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div className="p-4 rounded-lg shadow-lg bg-green-100">
+        <div className="p-4 rounded-md shadow-lg bg-green-100">
           <h3 className="text-xl font-semibold text-green-800 mb-2">Resumo da conta</h3>
           <div className="flex justify-between mb-2">
             <p className="text-lg">Saldo total:</p>
@@ -49,7 +49,7 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <div className="p-4 rounded-lg shadow-lg bg-green-100">
+        <div className="p-4 rounded-md shadow-lg bg-green-100">
           <h3 className="text-xl font-semibold text-green-800 mb-2">Transações recentes</h3>
           <ul>
             {recentTransactions.map((transaction, index) => (
@@ -70,7 +70,7 @@ const Dashboard = () => {
           </ul>
         </div>
 
-        <div className="p-4 rounded-lg shadow-lg bg-green-100">
+        <div className="p-4 rounded-md shadow-lg bg-green-100">
           <h3 className="text-xl font-semibold text-green-800 mb-2">Tendências de gastos</h3>
           <ResponsiveContainer width="100%" height={300}>
             <LineChart data={spendingTrends}>
@@ -81,7 +81,7 @@ const Dashboard = () => {
           </ResponsiveContainer>
         </div>
 
-        <div className="p-4 rounded-lg shadow-lg bg-green-100 col-span-1 md:col-span-2">
+        <div className="p-4 rounded-md shadow-lg bg-green-100 col-span-1 md:col-span-2">
           <h3 className="text-xl font-semibold text-green-800 mb-2">Categorias de despesas</h3>
           <ResponsiveContainer width="100%" height={300}>
             <PieChart>
@@ -107,7 +107,7 @@ const Dashboard = () => {
           </ResponsiveContainer>
         </div>
 
-        <div className="p-4 rounded-lg shadow-lg bg-green-100 col-span-1 md:col-span-2 lg:col-span-1">
+        <div className="p-4 rounded-md shadow-lg bg-green-100 col-span-1 md:col-span-2 lg:col-span-1">
           <h3 className="text-xl font-semibold text-green-800 mb-2">Receita vs Despesas</h3>
           <ResponsiveContainer width="100%" height={300}>
             <BarChart data={spendingTrends}>

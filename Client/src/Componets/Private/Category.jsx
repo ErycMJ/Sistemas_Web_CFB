@@ -26,7 +26,7 @@ const Category = () => {
         <div className="flex justify-between items-center mb-5">
           <button
             onClick={() => setShowAddCategoryForm(true)}
-            className="bg-green-800 px-5 py-3 rounded-3xl text-white hover:bg-green-700"
+            className="bg-green-800 px-5 py-3 rounded-md text-white hover:bg-green-700"
           >
             Adicionar categoria
           </button>
@@ -34,7 +34,7 @@ const Category = () => {
 
         {showAddCategoryForm && (
           <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-            <div ref={formRef} className="bg-white p-6 rounded-lg shadow-lg z-50 mx-auto w-96 max-w-md">
+            <div ref={formRef} className="bg-white p-6 rounded-md shadow-lg z-50 mx-auto w-96 max-w-md">
               <h3 className="mb-4 text-xl font-medium text-green-800">Adicionar categoria</h3>
               <div className="flex flex-col space-y-4 mb-4">
                 <input
@@ -57,7 +57,7 @@ const Category = () => {
                 </select>
                 <button
                   onClick={handleAddCategory}
-                  className="bg-green-800 px-5 py-3 rounded-3xl text-white hover:bg-green-700"
+                  className="bg-green-800 px-5 py-3 rounded-md text-white hover:bg-green-700"
                 >
                   Adicionar
                 </button>
@@ -68,7 +68,7 @@ const Category = () => {
 
         {showEditCategoryForm && (
           <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-            <div ref={formRef} className="bg-white p-6 rounded-lg shadow-lg z-50 w-full max-w-md">
+            <div ref={formRef} className="bg-white p-6 rounded-md shadow-lg z-50 w-full max-w-md">
               <h3 className="mb-4 text-lg font-medium text-green-800">Editar categoria</h3>
               <div className="flex flex-col space-y-4 mb-4">
                 <input
@@ -91,7 +91,7 @@ const Category = () => {
                 </select>
                 <button
                   onClick={handleEditCategory}
-                  className="bg-green-800 px-5 py-3 rounded-3xl text-white hover:bg-green-700"
+                  className="bg-green-800 px-5 py-3 rounded-md text-white hover:bg-green-700"
                 >
                   Salvar
                 </button>
@@ -102,7 +102,7 @@ const Category = () => {
 
         {showDeleteConfirmation && (
           <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-            <div ref={formRef} className="bg-white p-6 rounded-lg shadow-lg z-50 w-full max-w-md">
+            <div ref={formRef} className="bg-white p-6 rounded-md shadow-lg z-50 w-full max-w-md">
               <h3 className="mb-4 text-lg font-medium text-green-800">Excluir categoria</h3>
               <p>Tem certeza de que deseja excluir esta categoria?</p>
               <div className="flex justify-end space-x-4 mt-4">
@@ -126,10 +126,10 @@ const Category = () => {
         {incomeCategories.length > 0 ? (
           <>
             <span className="text-xl font-bold text-green-800 mb-4">Categorias de receitas</span>
-            <div className="bg-green-50 p-4 rounded-lg mb-5 shadow-lg">
+            <div className="bg-green-50 p-4 rounded-md mb-5 shadow-lg">
               <div className="flex flex-col space-y-2">
                 {incomeCategories.map((category) => (
-                  <div key={category._id} className="flex justify-between items-center p-1 border-b-2 border-r-2 rounded-lg border-green-700">
+                  <div key={category._id} className="flex justify-between items-center p-1 border-b-2 border-r-2 rounded-md border-green-700">
                     <span className="text-green-800 text-md font-medium">{category.categoryName}</span>
                     <div className="flex space-x-2">
                       <button
@@ -155,10 +155,10 @@ const Category = () => {
         {expenseCategories.length > 0 ? (
           <>
             <span className="text-xl font-bold text-green-800 mb-4">Categorias de despesas</span>
-            <div className="bg-green-50 p-4 rounded-lg mb-5 shadow-lg">
+            <div className="bg-green-50 p-4 rounded-md mb-5 shadow-lg">
               <div className="flex flex-col space-y-2">
                 {expenseCategories.map((category) => (
-                  <div key={category._id} className="flex justify-between items-center p-1 border-b-2 border-r-2 rounded-lg border-green-700">
+                  <div key={category._id} className="flex justify-between items-center p-1 border-b-2 border-r-2 rounded-md border-green-700">
                     <span className="text-green-800 text-md font-medium">{category.categoryName}</span>
                     <div className="flex space-x-2">
                       <button

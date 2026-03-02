@@ -35,7 +35,7 @@ const GoalLimit = () => {
           {goalsLimits.length === 0 && (
             <button
               onClick={() => setShowAddGoalLimitForm(true)}
-              className="bg-green-800 px-5 py-3 rounded-3xl text-white hover:bg-green-700"
+              className="bg-green-800 px-5 py-3 rounded-md text-white hover:bg-green-700"
             >
               Adicionar meta e limite
             </button>
@@ -46,7 +46,7 @@ const GoalLimit = () => {
           <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
             <div
               ref={formRef}
-              className="bg-white p-6 rounded-lg shadow-lg z-50 mx-auto w-96 max-w-md"
+              className="bg-white p-6 rounded-md shadow-lg z-50 mx-auto w-96 max-w-md"
             >
               <h3 className="mb-4 text-xl font-medium text-green-800">
                 Adicionar meta e limite
@@ -70,7 +70,7 @@ const GoalLimit = () => {
                 />
                 <button
                   onClick={handleAddGoalLimit}
-                  className="bg-green-800 px-5 py-3 rounded-3xl text-white hover:bg-green-700"
+                  className="bg-green-800 px-5 py-3 rounded-md text-white hover:bg-green-700"
                 >
                   Adicionar
                 </button>
@@ -85,13 +85,13 @@ const GoalLimit = () => {
               Metas e limites
             </span>
             <div className="grid grid-cols-2 gap-4 mb-5">
-              <div className="bg-white p-4 rounded-lg shadow-lg">
+              <div className="bg-white p-4 rounded-md shadow-lg">
                 <h3 className="text-lg font-bold text-green-800 mb-2">Metas (receitas)</h3>
                 <div className="flex flex-col space-y-2">
                   {goalsLimits.map((goalLimit) => (
                     <div
                       key={goalLimit._id}
-                      className="flex justify-between items-center p-1 border-b-2 border-green-700 rounded-lg"
+                      className="flex justify-between items-center p-1 border-b-2 border-green-700 rounded-md"
                     >
                       <span className="text-green-800 text-md font-medium">
                         Meta: {goalLimit.goal}
@@ -110,13 +110,13 @@ const GoalLimit = () => {
                 </div>
               </div>
 
-              <div className="bg-white p-4 rounded-lg shadow-lg">
+              <div className="bg-white p-4 rounded-md shadow-lg">
                 <h3 className="text-lg font-bold text-green-800 mb-2">Limites (despesas)</h3>
                 <div className="flex flex-col space-y-2">
                   {goalsLimits.map((goalLimit) => (
                     <div
                       key={goalLimit._id}
-                      className="flex justify-between items-center p-1 border-b-2 border-green-700 rounded-lg"
+                      className="flex justify-between items-center p-1 border-b-2 border-green-700 rounded-md"
                     >
                       <span className="text-green-800 text-md font-medium">
                         Limite: {goalLimit.limit}
@@ -136,7 +136,7 @@ const GoalLimit = () => {
               </div>
             </div>
 
-            <div className="bg-white p-6 rounded-lg shadow-lg">
+            <div className="bg-white p-6 rounded-md shadow-lg">
               <h3 className="text-xl font-bold text-green-800 mb-4">
                 Comparação de metas e transações
               </h3>
@@ -179,7 +179,7 @@ const GoalLimit = () => {
           <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
             <div
               ref={formRef}
-              className="bg-white p-6 rounded-lg shadow-lg z-50 w-full max-w-md"
+              className="bg-white p-6 rounded-md shadow-lg z-50 w-full max-w-md"
             >
               <h3 className="mb-4 text-lg font-medium text-green-800">
                 Editar meta e limite
@@ -203,7 +203,7 @@ const GoalLimit = () => {
                 />
                 <button
                   onClick={handleEditGoalLimit}
-                  className="bg-green-800 px-5 py-3 rounded-3xl text-white hover:bg-green-700"
+                  className="bg-green-800 px-5 py-3 rounded-md text-white hover:bg-green-700"
                 >
                   Salvar
                 </button>

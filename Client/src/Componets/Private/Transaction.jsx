@@ -39,7 +39,7 @@ const Transaction = () => {
       <div className="flex justify-between items-center mb-5">
         <button
           onClick={() => setShowAddTransactionForm(true)}
-          className="bg-green-800 px-5 py-3 rounded-3xl text-white hover:bg-green-700"
+          className="bg-green-800 px-5 py-3 rounded-md text-white hover:bg-green-700"
         >
           Adicionar Transação
         </button>
