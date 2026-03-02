@@ -185,16 +185,16 @@ const TransactionFormModal = ({
           </div>
         )}
 
-        <div className="flex justify-end">
+        <div className="flex justify-center mt-6">
           <button
             onClick={onSubmit}
-            className="bg-green-800 px-5 py-3 rounded-md text-white hover:bg-green-700 mr-2"
+            className="bg-green-600 px-5 py-3 rounded-md text-white hover:bg-green-700 mr-2"
           >
             {submitLabel}
           </button>
           <button
             onClick={onCancel}
-            className="bg-red-600 px-5 py-3 rounded-md text-white hover:bg-red-500"
+            className="bg-red-600 px-5 py-3 rounded-md text-white hover:bg-red-700 ml-2"
           >
             Cancelar
           </button>

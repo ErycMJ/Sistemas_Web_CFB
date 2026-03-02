@@ -14,14 +14,14 @@ const SignIn = () => {
                     <input
                         type='email'
                         placeholder='E-mail'
-                        className='border p-3 rounded-md text-green-900 font-medium'
+                        className='border p-3 rounded-md text-green-800 font-medium'
                         id='email'
                         onChange={handleChange}
                     />
                     <input
                         type='password'
                         placeholder='Senha'
-                        className='border p-3 rounded-md text-green-900 font-medium'
+                        className='border p-3 rounded-md text-green-800 font-medium'
                         id='password'
                         onChange={handleChange}
                     />

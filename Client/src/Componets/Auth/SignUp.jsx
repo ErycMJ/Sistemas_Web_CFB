@@ -15,7 +15,7 @@ const SignUp = () => {
                     <input
                         type='text'
                         placeholder='Nome de usuário'
-                        className='border p-3 rounded-md text-green-900 font-medium'
+                        className='border p-3 rounded-md text-green-800 font-medium'
                         id='username'
                         onChange={handleChange}
                     />
@@ -23,7 +23,7 @@ const SignUp = () => {
                         <input
                             type='email'
                             placeholder='E-mail'
-                            className='border p-3 rounded-md text-green-900 font-medium flex-grow'
+                            className='border p-3 rounded-md text-green-800 font-medium flex-grow'
                             id='email'
                             onChange={handleChange}
                         />
@@ -31,14 +31,14 @@ const SignUp = () => {
                     <input
                         type='password'
                         placeholder='Senha'
-                        className='border p-3 rounded-md text-green-900 font-medium'
+                        className='border p-3 rounded-md text-green-800 font-medium'
                         id='password'
                         onChange={handleChange}
                     />
                     <input
                         type='text'
                         placeholder='Telefone'
-                        className='border p-3 rounded-md text-green-900 font-medium'
+                        className='border p-3 rounded-md text-green-800 font-medium'
                         id='mobile'
                         onChange={handleChange}
                     />
