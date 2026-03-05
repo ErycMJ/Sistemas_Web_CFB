@@ -1,7 +1,7 @@
 const minutesToMilliseconds = (minutes) => {
-    return minutes * 60 * 1000; // Convert minutes to milliseconds
+    return minutes * 60 * 1000;
 };
-  
+
 export const sendToken = (user, statusCode, res, message) => {
     const cookieExpireMilliseconds = minutesToMilliseconds(parseInt(process.env.COOKIE_EXPIRE));
 

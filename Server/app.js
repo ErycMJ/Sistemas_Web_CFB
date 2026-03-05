@@ -16,13 +16,23 @@ import goalLimiRoutes from "./Routes/goalLimit.routes.js"
 const app = express()
 dotenv.config()
 
+const PORT = Number(process.env.PORT) || 5000
+const allowedOrigins = ["http://localhost:5173", "https://pinvent-app.vercel.app"]
+
 app.use(
   cors({
-    origin: ["*", "http://localhost:5173", "https://pinvent-app.vercel.app"], // Permitir solicitações de qualquer origem (em desenvolvimento)
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true)
+        return
+      }
+
+      callback(new Error("Not allowed by CORS"))
+    },
     methods: "GET, POST, PUT, DELETE",
     allowedHeaders:
       "Origin, X-Requested-With, Content-Type, Accept, Authorization",
-    credentials: true, // Permitir o envio de cookies de autenticação (se aplicável)
+    credentials: true,
   })
 )
 
@@ -40,8 +50,6 @@ app.use("/transaction", transactionRoutes)
 app.use("/chat", chatRoutes)
 app.use("/meta", goalLimiRoutes)
 
-
-
 mongoose
   .connect(process.env.MONGO_URI, {
     dbName: "Expense_Tracker",
@@ -52,9 +60,21 @@ mongoose
   .catch((err) => {
     console.log(`Some error occured while connecting to database: ${err}`)
   })
+
 app.use(errorMiddleware)
-app.listen(process.env.PORT || 5000, () => {
-  console.log(`Server running on port ${process.env.PORT}`)
+
+const server = app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`)
+})
+
+server.on("error", (error) => {
+  if (error.code === "EADDRINUSE") {
+    console.error(`Port ${PORT} is already in use. Set a different PORT in environment variables.`)
+    process.exit(1)
+  }
+
+  console.error("Failed to start server:", error)
+  process.exit(1)
 })
 
 export default app

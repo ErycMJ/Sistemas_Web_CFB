@@ -10,7 +10,7 @@ router.get('/getTransaction', isAuthenticated, getTransactions);
 router.get('/getRecentTransactions', isAuthenticated, getRecentTransactions);
 router.put('/editTransaction/:id', isAuthenticated, upload.single('photo'), editTransaction);
 router.delete('/deleteTransaction/:id', isAuthenticated, deleteTransaction);
-router.post('/import', isAuthenticated, importTransactions); // Nova rota para importar transações
+router.post('/import', isAuthenticated, importTransactions);
 
 
 

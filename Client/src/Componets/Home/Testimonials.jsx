@@ -6,7 +6,7 @@ const Testimonials = () => {
           O Que Nossos Usuários Dizem
         </h2>
         <div className="flex flex-col md:flex-row justify-center items-center gap-8">
-          <div className="bg-green-100 shadow-md rounded-lg p-6 w-full md:w-1/3">
+          <div className="bg-green-100 shadow-md rounded-md p-6 w-full md:w-1/3">
             <p className="text-green-700">
               O Rastreador de Despesas mudou a forma como gerencio minhas
               finanças. É simples e eficaz!
@@ -18,7 +18,7 @@ const Testimonials = () => {
               className="text-green-800 mt-4 rounded-full mx-auto h-12 w-12"
             />
           </div>
-          <div className="bg-green-100 shadow-md rounded-lg p-6 w-full md:w-1/3">
+          <div className="bg-green-100 shadow-md rounded-md p-6 w-full md:w-1/3">
             <p className="text-green-700">
               Adoro como posso definir orçamentos e acompanhar meus gastos.
               Recomendo muito!

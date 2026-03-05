@@ -10,7 +10,7 @@ const CallToAction = () => {
           despesas com o Rastreador de Despesas.
         </p>
         <Link to="/signup">
-          <button className="bg-green-800 text-white px-6 py-3 rounded-full text-lg font-bold hover:bg-green-700">
+          <button className="bg-green-800 text-white px-6 py-3 rounded-md text-lg font-bold hover:bg-green-700">
             Inscreva-se Agora
           </button>
         </Link>

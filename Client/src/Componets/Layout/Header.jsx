@@ -1,64 +1,32 @@
-import { useState, useEffect, useRef } from "react"
 import { useSelector } from "react-redux"
 import { Link } from "react-router-dom"
 import { CgProfile } from "react-icons/cg"
 import { PiUserList } from "react-icons/pi"
 import { TbLogout } from "react-icons/tb"
-import { FaBell } from 'react-icons/fa'; // Importando o ícone de notificação
+import { FaBell } from 'react-icons/fa';
+import { useHeader } from "../../hooks/layout"
 
 
-const Navbar = () => {
+const Header = () => {
   const { currentUser } = useSelector((state) => state.user)
-  const [dropdownOpen, setDropdownOpen] = useState(false)
-  const [notificationDropdownOpen, setNotificationDropdownOpen] =
-    useState(false)
-  const [notifications] = useState(0) // Exemplo com 3 notificações
-  const dropdownRef = useRef(null)
-  const [greeting, setGreeting] = useState("") // Estado para saudação
-
-  const notificationDropdownRef = useRef(null)
-
-  const toggleDropdown = () => {
-    setDropdownOpen(!dropdownOpen)
-  }
-
-  const toggleNotificationDropdown = () => {
-    setNotificationDropdownOpen(!notificationDropdownOpen)
-  }
-
-  const handleClickOutside = (event) => {
-    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-      setDropdownOpen(false)
-    }
-    if (
-      notificationDropdownRef.current &&
-      !notificationDropdownRef.current.contains(event.target)
-    ) {
-      setNotificationDropdownOpen(false)
-    }
-  }
-
-  useEffect(() => {
-    // Função para definir a saudação
-    const getGreeting = () => {
-      const currentHour = new Date().getHours()
-      if (currentHour < 12) return "Bom dia"
-      if (currentHour < 18) return "Boa tarde"
-      return "Boa noite"
-    }
-    setGreeting(getGreeting())                                
-    document.addEventListener("mousedown", handleClickOutside)
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside)
-    }
-  }, [])
+  const {
+    dropdownOpen,
+    notificationDropdownOpen,
+    notifications,
+    greeting,
+    dropdownRef,
+    notificationDropdownRef,
+    setDropdownOpen,
+    setNotificationDropdownOpen,
+    toggleDropdown,
+    toggleNotificationDropdown,
+  } = useHeader()
 
   return (
     <header
       className={`${currentUser ? "bg-white" : "bg-green-200"} shadow-md py-4`}
     >
       <div className="flex justify-between items-center max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Left Section */}
         <div></div>
         {currentUser ? null : (
           <>
@@ -74,14 +42,13 @@ const Navbar = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  powered by T&T
+                  desenvolvido por T&T
                 </a>
               </span>
             </div>
           </>
         )}
 
-        {/* Center Section */}
         {currentUser ? (
           <>
             <div className="hidden md:flex space-x-4">
@@ -89,13 +56,12 @@ const Navbar = () => {
                 to="/dashboard"
                 className="text-green-800 text-xl font-medium"
               >
-                Bem Vindo ao Controle de Finanças
+                Bem-vindo ao Controle de Finanças
               </Link>
             </div>
           </>
         ) : null}
 
-        {/* Right Section */}
         <div className="relative flex items-center">
           {currentUser ? (
             <>
@@ -109,7 +75,6 @@ const Navbar = () => {
                 </span>
                 <PiUserList className="text-4xl flex-grow text-green-800 " />
               </button>
-              {/* Ícone de Notificação */}
               <div className="relative mx-3">
                 <button
                   onClick={toggleNotificationDropdown}
@@ -117,7 +82,7 @@ const Navbar = () => {
                 >
                   <FaBell className="text-2xl text-green-800 mt-1" />
                   {notifications > 0 && (
-                    <span className="absolute top-0 right-0 h-4 w-4 bg-red-600 text-white rounded-full text-xs flex items-center justify-center">
+                    <span className="absolute top-0 right-0 h-4 w-4 bg-red-600 text-white rounded-md text-xs flex items-center justify-center">
                       {notifications}
                     </span>
                   )}
@@ -136,7 +101,7 @@ const Navbar = () => {
                           </p>
                           <Link
                             to="/notifications"
-                            className="flex rounded-lg px-4 py-2 text-md font-medium text-green-800 hover:bg-green-100 hover:text-gray-700"
+                            className="flex rounded-md px-4 py-2 text-md font-medium text-green-800 hover:bg-green-100 hover:text-gray-700"
                             role="menuitem"
                             onClick={() => setNotificationDropdownOpen(false)}
                           >
@@ -161,7 +126,7 @@ const Navbar = () => {
                   <div className="py-1" role="none">
                     <Link
                       to="/profile"
-                      className="flex rounded-lg px-4 py-2 text-md font-medium text-green-800 hover:bg-green-100 hover:text-gray-700"
+                      className="flex rounded-md px-4 py-2 text-md font-medium text-green-800 hover:bg-green-100 hover:text-gray-700"
                       role="menuitem"
                       onClick={() => setDropdownOpen(false)}
                     >
@@ -170,7 +135,7 @@ const Navbar = () => {
                     </Link>
                     <Link
                       to="/signout"
-                      className="flex rounded-lg px-4 py-2 text-md font-medium text-green-800 hover:bg-green-100 hover:text-gray-700"
+                      className="flex rounded-md px-4 py-2 text-md font-medium text-green-800 hover:bg-green-100 hover:text-gray-700"
                       role="menuitem"
                       onClick={() => setDropdownOpen(false)}
                     >
@@ -187,13 +152,13 @@ const Navbar = () => {
           ) : (
             <>
               <Link to="/signup">
-                <div className="bg-green-800 px-5 py-3 rounded-3xl text-white mx-2 hover:bg-green-700">
-                  <button className="text-lg">Inscrever</button>
+                <div className="bg-green-800 px-5 py-3 rounded-md text-white mx-2 hover:bg-green-700">
+                  <button className="text-lg">Cadastrar</button>
                 </div>
               </Link>
               <Link to="/signin">
-                <div className="bg-green-800 px-5 py-3 rounded-3xl text-white mx-2 hover:bg-green-700">
-                  <button className="text-lg">Login</button>
+                <div className="bg-green-800 px-5 py-3 rounded-md text-white mx-2 hover:bg-green-700">
+                  <button className="text-lg">Entrar</button>
                 </div>
               </Link>
             </>
@@ -204,4 +169,4 @@ const Navbar = () => {
   )
 }
 
-export default Navbar
+export default Header

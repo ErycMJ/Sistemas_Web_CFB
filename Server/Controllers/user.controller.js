@@ -1,28 +1,28 @@
 import { catchAsyncError } from "../Middlewares/catchAsyncError.js";
 import ErrorHandler from "../Middlewares/error.js";
 import { User } from "../Models/user.model.js";
-import {sendToken} from "../Utils/jwt.token.js";
+import { sendToken } from "../Utils/jwt.token.js";
 import nodemailer from 'nodemailer';
 import bcryptjs from "bcryptjs";
 
 export const Signup = catchAsyncError(async (req, res, next) => {
-    const { username, email, password, mobile }= req.body;
-    if( !username || !email || !password || !mobile ){
+    const { username, email, password, mobile } = req.body;
+    if (!username || !email || !password || !mobile) {
         return next(new ErrorHandler("Please fill full registration form"));
     }
-    const isEmail = await User.findOne({email});
-    if(isEmail) {
+    const isEmail = await User.findOne({ email });
+    if (isEmail) {
         return next(new ErrorHandler("Email already Exists"));
     }
     const user = await User.create({
-        username,email,password,mobile
+        username, email, password, mobile
     });
     res.status(200).json({
         success: true,
         message: "User Registered Successfully",
         user
     });
-    
+
     const transporter = nodemailer.createTransport({
         service: 'Gmail',
         auth: {
@@ -106,23 +106,23 @@ export const Signup = catchAsyncError(async (req, res, next) => {
 
 });
 
-export const Signin = catchAsyncError(async(req, res, next)=>{
-    const { email, password} = req.body;
-    if(!email || !password){
-        return next(new ErrorHandler("Please Provide Email and Password",400));
+export const Signin = catchAsyncError(async (req, res, next) => {
+    const { email, password } = req.body;
+    if (!email || !password) {
+        return next(new ErrorHandler("Please Provide Email and Password", 400));
     }
-    const user = await User.findOne({email}).select("+password");
-    if(!user){
-        return next(new ErrorHandler("Invalid Email and Password",400));
+    const user = await User.findOne({ email }).select("+password");
+    if (!user) {
+        return next(new ErrorHandler("Invalid Email and Password", 400));
     }
     const isPasswordMatched = await user.comparePassword(password);
-    if( !isPasswordMatched ) {
-        return next(new ErrorHandler("Invalid Email and Password",400))
+    if (!isPasswordMatched) {
+        return next(new ErrorHandler("Invalid Email and Password", 400))
     }
-    sendToken(user, 200, res,"Logged In Successfully")
+    sendToken(user, 200, res, "Logged In Successfully")
 });
 
-export const Signout = catchAsyncError(async(req, res, next)=>{
+export const Signout = catchAsyncError(async (req, res, next) => {
     res.status(201).cookie("token", "", {
         httpOnly: true,
         expires: new Date(Date.now()),
@@ -134,30 +134,30 @@ export const Signout = catchAsyncError(async(req, res, next)=>{
 
 export const updateAvatar = catchAsyncError(async (req, res, next) => {
     const user = await User.findByIdAndUpdate(req.user.id, { avatar: `/uploads/${req.file.filename}` }, { new: true });
-  
+
     res.status(200).json({
-      success: true,
-      message: "Avatar updated successfully",
-      user
+        success: true,
+        message: "Avatar updated successfully",
+        user
     });
 });
 
 export const updateProfile = catchAsyncError(async (req, res, next) => {
     const { username } = req.body;
-  
+
     const user = await User.findByIdAndUpdate(req.user.id, { username }, {
-      new: true,
-      runValidators: true,
+        new: true,
+        runValidators: true,
     });
-  
+
     res.status(200).json({
-      success: true,
-      message: 'Profile Details Updated Successfully',
-      user,
+        success: true,
+        message: 'Profile Details Updated Successfully',
+        user,
     });
 });
 
-export const protectedMode = catchAsyncError(async(req,res,next)=>{
+export const protectedMode = catchAsyncError(async (req, res, next) => {
     res.status(200).json({
         success: true,
         message: 'This is a protected route',

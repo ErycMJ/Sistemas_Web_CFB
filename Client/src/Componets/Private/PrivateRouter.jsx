@@ -1,9 +1,9 @@
-import  { useEffect } from 'react';
+import { useEffect } from 'react';
 import { Navigate, Outlet, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
-import String from "../../String";  // Ensure this is correctly imported and holds the base URL
+import String from "../../String";
 import { signOut } from '../../Redux/User/userSlice';
 
 export const PrivateRouter = () => {
@@ -14,9 +14,9 @@ export const PrivateRouter = () => {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const response = await axios.get(`${String}/user/protectedRoute`, { withCredentials: true });
+        await axios.get(`${String}/user/protectedRoute`, { withCredentials: true });
       } catch (error) {
-        if(error.response.data.success === false){                
+        if (error.response.data.success === false) {
           dispatch(signOut());
           toast.error('Session expired, please sign in again.');
           navigate('/signin');

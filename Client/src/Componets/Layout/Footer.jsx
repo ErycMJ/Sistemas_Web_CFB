@@ -15,7 +15,7 @@ export const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                powered by T&T
+                desenvolvido por T&T
               </a>
             </span>
           </div>
@@ -29,7 +29,7 @@ export const Footer = () => {
             to="/faqs"
             className="hover:text-green-500 text-green-800 text-xl font-medium"
           >
-            FAQs
+            Perguntas frequentes
           </Link>
         </div>
       </div>

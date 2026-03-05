@@ -33,7 +33,7 @@ const Faqs = () => {
                 <h2 className="text-lg font-medium text-green-800">
                   {faq.question}
                 </h2>
-                <span className="shrink-0 rounded-full bg-white p-1.5 text-green-800 sm:p-3">
+                <span className="shrink-0 rounded-md bg-white p-1.5 text-green-800 sm:p-3">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="size-5 shrink-0 transition duration-300 group-open:-rotate-45"
