@@ -2,8 +2,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Home from "./Componets/Home/Home"
 import SignIn from "./Componets/Auth/SignIn"
 import SignUp from "./Componets/Auth/SignUp"
-import Navbar from "./Componets/Layout/Navbar"
-import { Footer } from "./Componets/Layout/Footer"
 import { Toaster } from "react-hot-toast"
 import { PrivateRouter } from "./Componets/Private/PrivateRouter"
 import { Profile } from "./Componets/Private/Profile"
@@ -17,8 +15,10 @@ import GoalLimitModal from "./Componets/Private/GoalLimitModal"
 import Sidebar from "./Componets/Layout/Sidebar"
 import { useState } from "react"
 import ChatModal from "./Componets/Layout/ChatModal"
+import Footer from "./Componets/WelcomePage/Footer/index"
+import Header from "./Componets/WelcomePage/Navbar/index"
 
-const App = () => {
+export default function App() {
   const { currentUser } = useSelector((state) => state.user)
   const [isChatOpen, setIsChatOpen] = useState(false)
 
@@ -30,7 +30,7 @@ const App = () => {
     <>
       <BrowserRouter>
         <div className="app-container min-h-screen flex flex-col">
-          <Navbar />
+          <Header />
 
           <div className="flex flex-grow">
             {currentUser && <Sidebar />}
@@ -68,7 +68,7 @@ const App = () => {
           <Toaster />
 
           <button
-            className="fixed bottom-4 right-4 bg-green-800 text-white p-3 rounded-full shadow-lg animate-pulse"
+            className="fixed bottom-4 right-4 $bg-green-800 text-white p-3 rounded-full shadow-lg animate-pulse"
             onClick={toggleChat}
           >
             <svg
@@ -97,5 +97,3 @@ const App = () => {
     </>
   )
 }
-
-export default App

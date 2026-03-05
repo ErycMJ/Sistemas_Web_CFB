@@ -4,10 +4,10 @@ import { CgProfile } from "react-icons/cg"
 import { PiUserList } from "react-icons/pi"
 import { TbLogout } from "react-icons/tb"
 import { FaBell } from 'react-icons/fa';
-import { useNavbar } from "../../hooks/layout"
+import { useHeader } from "../../hooks/layout"
 
 
-const Navbar = () => {
+const Header = () => {
   const { currentUser } = useSelector((state) => state.user)
   const {
     dropdownOpen,
@@ -20,7 +20,7 @@ const Navbar = () => {
     setNotificationDropdownOpen,
     toggleDropdown,
     toggleNotificationDropdown,
-  } = useNavbar()
+  } = useHeader()
 
   return (
     <header
@@ -169,4 +169,4 @@ const Navbar = () => {
   )
 }
 
-export default Navbar
+export default Header

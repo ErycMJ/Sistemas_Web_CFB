@@ -27,7 +27,8 @@
     "react-router-dom": "^6.23.1",
     "react-slider": "^2.0.6",
     "recharts": "^2.12.7",
-    "redux-persist": "^6.0.0"
+    "redux-persist": "^6.0.0",
+    "styled-components": "^6.3.11"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",

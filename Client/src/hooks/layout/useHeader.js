@@ -7,7 +7,7 @@ const getGreeting = () => {
   return "Boa noite"
 }
 
-export const useNavbar = () => {
+export const useHeader = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false)
   const [notificationDropdownOpen, setNotificationDropdownOpen] = useState(false)
   const [notifications] = useState(0)

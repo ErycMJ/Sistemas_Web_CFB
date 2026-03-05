@@ -187,6 +187,10 @@ export const Profile = () => {
             Importar transações
           </button>
         </div>
+
+        <button onClick={() => window.location.href = "/signout"} className="w-full mt-10 bg-red-600 text-white py-2 rounded-md hover:bg-red-500">
+          Sair
+        </button>
       </div>
     </>
   )
