@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from "react"
 import toast from "react-hot-toast"
-import { createInitialTransactionFormData } from "../../Componets/Private/transactionDefaults"
+import { createInitialTransactionFormData } from "../../components/Private/transactionDefaults"
 import {
   createTransaction,
   fetchCategoriesByType,
   getApiErrorMessage,
-} from "../../Componets/Private/transactionApi"
+} from "../../components/Private/transactionApi"
 
 export const useTransactionModal = () => {
   const [categories, setCategories] = useState([])

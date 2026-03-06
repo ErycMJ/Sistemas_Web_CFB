@@ -1,18 +1,19 @@
-import styled from "styled-components"
+import { styled } from '@stitches/react';
 import { colors } from "../../../shared/utils/Colors"
 
-const FooterContainer = styled.footer`
-    background-color: ${colors().lightgreen};
-    color: ${colors().white};
-    padding: 2rem 0;
-    margin-top: 2rem;
+const FooterContainer = styled("footer", {
+    backgroundColor: colors().lightgreen,
+    color: colors().white,
+    padding: "2rem 0",
+    marginTop: "2rem",
 
-    .container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-between;
-        margin: 0 auto;
-}`
+    ".container": {
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "space-between",
+        margin: "0 auto"
+    }
+})
 
 export { FooterContainer }

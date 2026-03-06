@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 import toast from "react-hot-toast"
-import { createInitialTransactionFormData } from "../../Componets/Private/transactionDefaults"
+import { createInitialTransactionFormData } from "../../components/Private/transactionDefaults"
 import {
   createTransaction,
   fetchAllCategories,
@@ -9,7 +9,7 @@ import {
   getApiErrorMessage,
   removeTransaction,
   updateTransaction,
-} from "../../Componets/Private/transactionApi"
+} from "../../components/Private/transactionApi"
 
 const mapTransactionsAmount = (transactions) => {
   return transactions.map((transaction) => ({

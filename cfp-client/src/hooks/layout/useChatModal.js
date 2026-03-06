@@ -1,7 +1,7 @@
 import { useState } from "react"
 import axios from "axios"
 import string from "../../String"
-import { getApiErrorMessage } from "../../Componets/Private/transactionApi"
+import { getApiErrorMessage } from "../../components/Private/transactionApi"
 
 export const useChatModal = (isLoggedIn) => {
   const [activeTab, setActiveTab] = useState("support")

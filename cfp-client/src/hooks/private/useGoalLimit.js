@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react"
 import axios from "axios"
 import toast from "react-hot-toast"
 import string from "../../String"
-import { getApiErrorMessage } from "../../Componets/Private/transactionApi"
+import { getApiErrorMessage } from "../../components/Private/transactionApi"
 
 const initialGoalFormData = {
   goal: "",

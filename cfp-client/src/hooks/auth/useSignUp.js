@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom"
 import axios from "axios"
 import toast from "react-hot-toast"
 import String from "../../String"
-import { getApiErrorMessage } from "../../Componets/Private/transactionApi"
+import { getApiErrorMessage } from "../../components/Private/transactionApi"
 
 export const useSignUp = () => {
   const [formData, setFormData] = useState({})

@@ -1,10 +1,10 @@
-import styled from "styled-components";
+import { styled } from '@stitches/react';
 import { colors } from "../Colors";
 
-const SpanContainer = styled.span`
-    font-size: 14px;
-    color: ${colors().gray};
-    margin-top: 5px;
-`
+const SpanContainer = styled("span", {
+    fontSize: "14px",
+    color: colors().gray,
+    marginTop: "5px",
+})
 
 export { SpanContainer }

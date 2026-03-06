@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux"
 import toast from "react-hot-toast"
 import string from "../../String"
 import { updateUser } from "../../Redux/User/userSlice"
-import { getApiErrorMessage } from "../../Componets/Private/transactionApi"
+import { getApiErrorMessage } from "../../components/Private/transactionApi"
 
 const IMPORT_TEMPLATE_HEADERS = ["descricao", "valor", "data", "categoria", "moeda"]
 
@@ -109,7 +109,7 @@ const resolveColumnIndices = (headerColumns) => ({
   amountIndex: headerColumns.findIndex((column) =>
     ["valor", "amount", "quantia"].includes(column)
   ),
-  dateIndex: headerColumns.findIndex((column) => ["data", "date", "dt"] .includes(column)),
+  dateIndex: headerColumns.findIndex((column) => ["data", "date", "dt"].includes(column)),
   categoryIndex: headerColumns.findIndex((column) =>
     ["categoria", "category"].includes(column)
   ),

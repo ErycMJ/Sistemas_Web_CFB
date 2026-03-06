@@ -5,7 +5,7 @@ import axios from "axios"
 import toast from "react-hot-toast"
 import string from "../../String"
 import { signOut } from "../../Redux/User/userSlice"
-import { getApiErrorMessage } from "../../Componets/Private/transactionApi"
+import { getApiErrorMessage } from "../../components/Private/transactionApi"
 
 export const useSignOut = () => {
   const dispatch = useDispatch()

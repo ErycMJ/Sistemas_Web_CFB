@@ -1,8 +1,8 @@
-import styled from "styled-components"
+import { styled } from '@stitches/react';
 
-const ButtonsContainer = styled.div`
-    display: flex;
-    align-items: center;
-`
+const ButtonsContainer = styled("div", {
+    display: "flex",
+    alignItems: "center"
+})
 
 export { ButtonsContainer }

@@ -5,7 +5,7 @@ import axios from "axios"
 import toast from "react-hot-toast"
 import String from "../../String"
 import { signInFailure, signInStart, signInSuccess } from "../../Redux/User/userSlice"
-import { getApiErrorMessage } from "../../Componets/Private/transactionApi"
+import { getApiErrorMessage } from "../../components/Private/transactionApi"
 
 export const useSignIn = () => {
   const [formData, setFormData] = useState({})
