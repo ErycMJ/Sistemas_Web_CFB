@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import Button from "../../../../shared/utils/Button";
-import { colors } from "../../../../shared/utils/Colors";
 import { ButtonsContainer } from "./style";
 
 
@@ -8,10 +7,10 @@ export default function Buttons() {
     return (
         <ButtonsContainer>
             <Link to="/signup">
-                <Button onClick={() => { }} text={"Cadastrar"} color={colors().green} hoverColor={colors().darkgreen} />
+                <Button onClick={() => { }} text={"Cadastrar"} type={"greenButton"} />
             </Link>
             <Link to="/signin">
-                <Button onClick={() => { }} text={"Entrar"} color={colors().green} hoverColor={colors().darkgreen} />
+                <Button onClick={() => { }} text={"Entrar"} type={"greenButton"} />
             </Link>
         </ButtonsContainer>
     )

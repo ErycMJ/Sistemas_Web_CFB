@@ -1,8 +1,7 @@
 import { styled } from '@stitches/react';
+import { colors } from '../Colors';
 
 const ButtonContainer = styled("button", {
-    backgroundColor: (props) => props.color ? props.color : "transparent",
-    color: "white",
     padding: "10px",
     fontSize: "16px",
     fontWeight: 900,
@@ -12,9 +11,18 @@ const ButtonContainer = styled("button", {
     borderRadius: "5px",
     margin: "5px",
 
-    "&:hover": {
-        backgroundColor: (props) => props.hoverColor ? props.hoverColor : "transparent",
-        cursor: "pointer"
+    variants: {
+        type: {
+            greenButton: {
+                backgroundColor: colors().green,
+                color: colors().white,
+
+                "&:hover": {
+                    backgroundColor: colors().darkgreen,
+                    cursor: "pointer"
+                }
+            }
+        }
     }
 })
 

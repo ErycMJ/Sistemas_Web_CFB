@@ -1,10 +1,10 @@
 import PropTypes from "prop-types"
 import { ButtonContainer } from "./style"
 
-export default function Button({ onClick, text, color, hoverColor }) {
-    console.log("Button props:", { onClick, text, color, hoverColor })
+export default function Button({ onClick, text, type }) {
+    console.log("Button props:", { onClick, text, type })
     return (
-        <ButtonContainer onClick={onClick} color={color} hoverColor={hoverColor}>
+        <ButtonContainer onClick={onClick} type={type}>
             {text}
         </ButtonContainer>
     )
@@ -13,6 +13,5 @@ export default function Button({ onClick, text, color, hoverColor }) {
 Button.propTypes = {
     onClick: PropTypes.func,
     text: PropTypes.string,
-    color: PropTypes.string,
-    hoverColor: PropTypes.string
+    type: PropTypes.string
 }
