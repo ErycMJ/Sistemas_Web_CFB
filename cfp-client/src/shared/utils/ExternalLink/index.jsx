@@ -1,14 +1,16 @@
 import PropTypes from 'prop-types';
+import { ExternalLinkContainer } from "./style";
 
-export default function ExternalLink({ href, children }) {
+export default function ExternalLink({ href, text, children }) {
     return (
-        <a href={href} target="_blank" rel="noopener noreferrer">
-            {children}
-        </a>
+        <ExternalLinkContainer href={href} target="_blank" rel="noopener noreferrer">
+            {text || children}
+        </ExternalLinkContainer>
     );
 }
 
 ExternalLink.propTypes = {
     href: PropTypes.string.isRequired,
-    children: PropTypes.node.isRequired,
+    text: PropTypes.node,
+    children: PropTypes.node,
 };

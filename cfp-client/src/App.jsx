@@ -1,6 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import { Toaster } from "react-hot-toast"
-import Home from "../src/components/Home/Home"
 import SignIn from "../src/components/Auth/SignIn"
 import SignUp from "../src/components/Auth/SignUp"
 import { PrivateRouter } from "../src/components/Private/PrivateRouter"
@@ -15,8 +14,8 @@ import GoalLimitModal from "../src/components/Private/GoalLimitModal"
 import Sidebar from "../src/components/Layout/Sidebar"
 import { useState } from "react"
 import ChatModal from "../src/components/Layout/ChatModal"
-import Footer from "../src/components/WelcomePage/Footer/index"
-import Header from "../src/components/WelcomePage/Header/index"
+import WelcomePage from "./components/WelcomePage"
+import PrivateHeader from "./components/Private/Header"
 
 export default function App() {
   const { currentUser } = useSelector((state) => state.user)
@@ -30,8 +29,6 @@ export default function App() {
     <>
       <BrowserRouter>
         <div className="app-container min-h-screen flex flex-col">
-          <Header />
-
           <div className="flex flex-grow">
             {currentUser && <Sidebar />}
 
@@ -39,11 +36,13 @@ export default function App() {
               className={`flex-grow transition-all duration-300 ${currentUser ? "ml-16" : ""
                 }`}
             >
+              {currentUser && <PrivateHeader />}
+
               <Routes>
                 {currentUser ? (
                   <Route path="/dashboard" element={<Dashboard />} />
                 ) : (
-                  <Route path="/" element={<Home />} />
+                  <Route path="/" element={<WelcomePage />} />
                 )}
                 <Route path="/SignIn" element={<SignIn />} />
                 <Route path="/SignUp" element={<SignUp />} />
@@ -59,11 +58,6 @@ export default function App() {
             </main>
           </div>
 
-          {!currentUser && (
-            <div className="mt-auto">
-              <Footer />
-            </div>
-          )}
 
           <Toaster />
 

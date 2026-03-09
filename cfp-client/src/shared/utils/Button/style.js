@@ -14,7 +14,7 @@ const ButtonContainer = styled("button", {
     variants: {
         type: {
             greenButton: {
-                backgroundColor: colors().green,
+                backgroundColor: colors().mediumgreen,
                 color: colors().white,
 
                 "&:hover": {

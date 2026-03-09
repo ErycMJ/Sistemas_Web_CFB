@@ -2,7 +2,6 @@ import PropTypes from "prop-types"
 import { ButtonContainer } from "./style"
 
 export default function Button({ onClick, text, type }) {
-    console.log("Button props:", { onClick, text, type })
     return (
         <ButtonContainer onClick={onClick} type={type}>
             {text}

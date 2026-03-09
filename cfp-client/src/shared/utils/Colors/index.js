@@ -1,8 +1,9 @@
 export function colors() {
     return {
         darkgreen: "#065F46",
-        green: "#0a7b56",
-        lightgreen: "#A7F3D0",
+        mediumgreen: "#0dd273",
+        green: "#bbf7d0",
+        lightgreen: "#f0fdf4",
         gray: "#6B7280",
         background: "#F3F4F6",
         text: "#111827",
