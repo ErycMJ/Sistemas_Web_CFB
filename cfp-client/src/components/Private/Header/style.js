@@ -5,6 +5,9 @@ const PrivateHeaderContainer = styled("header", {
   backgroundColor: colors().lightgreen,
   borderBottom: `1px solid ${colors().green}`,
   padding: "1rem 1.25rem",
+  position: "sticky",
+  top: 0,
+  zIndex: 1
 });
 
 const PrivateHeaderContent = styled("div", {
