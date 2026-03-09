@@ -16,6 +16,7 @@ import { useState } from "react"
 import ChatModal from "../src/components/Layout/ChatModal"
 import WelcomePage from "./components/WelcomePage"
 import PrivateHeader from "./components/Private/Header"
+import Header from "./components/WelcomePage/Header"
 
 export default function App() {
   const { currentUser } = useSelector((state) => state.user)
@@ -26,68 +27,68 @@ export default function App() {
   }
 
   return (
-    <>
-      <BrowserRouter>
-        <div className="app-container min-h-screen flex flex-col">
-          <div className="flex flex-grow">
-            {currentUser && <Sidebar />}
+    <BrowserRouter>
+      {!currentUser && <Header />}
 
-            <main
-              className={`flex-grow transition-all duration-300 ${currentUser ? "ml-16" : ""
-                }`}
-            >
-              {currentUser && <PrivateHeader />}
+      <div className="app-container min-h-screen flex flex-col">
+        <div className="flex flex-grow">
+          {currentUser && <Sidebar />}
 
-              <Routes>
-                {currentUser ? (
-                  <Route path="/dashboard" element={<Dashboard />} />
-                ) : (
-                  <Route path="/" element={<WelcomePage />} />
-                )}
-                <Route path="/SignIn" element={<SignIn />} />
-                <Route path="/SignUp" element={<SignUp />} />
-                <Route path="/faqs" element={<Faqs />} />
-                <Route element={<PrivateRouter />}>
-                  <Route path="/category" element={<Category />} />
-                  <Route path="/transaction" element={<Transaction />} />
-                  <Route path="/profile" element={<Profile />} />
-                  <Route path="/goals-limits" element={<GoalLimitModal />} />
-                  <Route path="/Signout" element={<SignOut />} />
-                </Route>
-              </Routes>
-            </main>
-          </div>
-
-
-          <Toaster />
-
-          <button
-            className="fixed bottom-4 right-4 $bg-green-800 text-white p-3 rounded-full shadow-lg animate-pulse"
-            onClick={toggleChat}
+          <main
+            className={`flex-grow transition-all duration-300 ${currentUser ? "ml-16" : ""
+              }`}
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-8 w-8 text-white"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M8 10h.01M12 10h.01M16 10h.01M9 16h6M12 3C7.03 3 3 7.03 3 12c0 1.82.5 3.53 1.36 5.01L3 21l3.99-1.36A8.961 8.961 0 0012 21c4.97 0 9-4.03 9-9s-4.03-9-9-9z"
-              />
-            </svg>
-          </button>
+            {currentUser && <PrivateHeader />}
 
-          <ChatModal
-            isOpen={isChatOpen}
-            onClose={toggleChat}
-            isLoggedIn={!!currentUser}
-          />
+            <Routes>
+              {currentUser ? (
+                <Route path="/dashboard" element={<Dashboard />} />
+              ) : (
+                <Route path="/" element={<WelcomePage />} />
+              )}
+              <Route path="/SignIn" element={<SignIn />} />
+              <Route path="/SignUp" element={<SignUp />} />
+              <Route path="/faqs" element={<Faqs />} />
+              <Route element={<PrivateRouter />}>
+                <Route path="/category" element={<Category />} />
+                <Route path="/transaction" element={<Transaction />} />
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/goals-limits" element={<GoalLimitModal />} />
+                <Route path="/Signout" element={<SignOut />} />
+              </Route>
+            </Routes>
+          </main>
         </div>
-      </BrowserRouter>
-    </>
+
+
+        <Toaster />
+
+        <button
+          className="fixed bottom-4 right-4 $bg-green-800 text-white p-3 rounded-full shadow-lg animate-pulse"
+          onClick={toggleChat}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-8 w-8 text-white"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={2}
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M8 10h.01M12 10h.01M16 10h.01M9 16h6M12 3C7.03 3 3 7.03 3 12c0 1.82.5 3.53 1.36 5.01L3 21l3.99-1.36A8.961 8.961 0 0012 21c4.97 0 9-4.03 9-9s-4.03-9-9-9z"
+            />
+          </svg>
+        </button>
+
+        <ChatModal
+          isOpen={isChatOpen}
+          onClose={toggleChat}
+          isLoggedIn={!!currentUser}
+        />
+      </div>
+    </BrowserRouter>
   )
 }
