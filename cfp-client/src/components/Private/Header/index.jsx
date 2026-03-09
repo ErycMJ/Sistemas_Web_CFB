@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { useHeader } from "../../../hooks/layout";
+import { useHeader } from "../../../hooks/layout/useHeader";
 import { ParagraphContainer } from "../../../shared/utils/Paragraph/style";
 import { SubTitleContainer } from "../../../shared/utils/SubTitle/style";
 import {

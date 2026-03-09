@@ -7,7 +7,7 @@ import Buttons from "./Buttons";
 export default function Header() {
     return (
         <header
-            className={`bg-green-200 shadow-md py-4`}
+            className={`bg-green-200 shadow-md py-4 sticky top-0 z-1`}
         >
             <div className="flex justify-between items-center max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex flex-col items-center">

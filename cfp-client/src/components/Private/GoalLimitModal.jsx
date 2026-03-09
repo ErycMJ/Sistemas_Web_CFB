@@ -11,7 +11,7 @@ import {
   Legend,
   Line,
 } from "recharts"
-import { useGoalLimit } from "../../hooks/private"
+import { useGoalLimit } from "../../hooks/private/useGoalLimit"
 
 const GoalLimit = () => {
   const {

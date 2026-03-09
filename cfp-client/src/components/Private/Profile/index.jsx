@@ -1,4 +1,4 @@
-import { useProfile } from "../../../hooks/private";
+import { useProfile } from "../../../hooks/private/useProfile";
 import Button from "../../../shared/utils/Button";
 import { ParagraphContainer } from "../../../shared/utils/Paragraph/style";
 import { SubTitleContainer } from "../../../shared/utils/SubTitle/style";

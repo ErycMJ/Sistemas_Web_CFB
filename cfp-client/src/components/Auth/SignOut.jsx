@@ -1,4 +1,4 @@
-import { useSignOut } from '../../hooks/auth';
+import { useSignOut } from '../../hooks/auth/useSignOut';
 
 export const SignOut = () => {
   useSignOut();

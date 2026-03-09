@@ -2,7 +2,7 @@ import TransactionFilters from "../TransactionFilters";
 import TransactionFormModal from "../TransactionFormModal";
 import TransactionDeleteModal from "../TransactionDeleteModal";
 import TransactionList from "../TransactionList";
-import { useTransactions } from "../../../hooks/private";
+import { useTransactions } from "../../../hooks/private/useTransactions";
 import Button from "../../../shared/utils/Button";
 import { PrivatePageContainer } from "./style";
 

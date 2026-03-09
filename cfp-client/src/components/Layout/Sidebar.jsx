@@ -5,7 +5,7 @@ import { FaExchangeAlt } from "react-icons/fa"
 import { AiOutlineInfoCircle } from "react-icons/ai"
 import { MdOutlineAddTask } from "react-icons/md"
 import TransactionModal from "../Private/TransactionModal"
-import { useSidebar } from "../../hooks/layout"
+import { useSidebar } from "../../hooks/layout/useSidebar"
 
 const Sidebar = () => {
   const { isMinimized, toggleSidebar } = useSidebar()

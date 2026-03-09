@@ -1,6 +1,6 @@
 import { Link, Navigate } from "react-router-dom";
-import { useSignUp } from "../../../hooks/auth";
-import Button from "../../../shared/utils/Button";
+import { useSignUp } from "../../../hooks/auth/useSignUp";
+import Button from "../../../shared/utils/Button/index";
 import { ParagraphContainer } from "../../../shared/utils/Paragraph/style";
 import { TitleContainer } from "../../../shared/utils/Title/style";
 import { AuthDivider, AuthFooter, AuthForm, AuthInput, AuthPageContainer } from "./style";

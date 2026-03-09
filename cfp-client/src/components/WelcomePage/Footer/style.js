@@ -2,7 +2,7 @@ import { styled } from '@stitches/react';
 import { colors } from "../../../shared/utils/Colors"
 
 const FooterContainer = styled("footer", {
-    backgroundColor: colors().lightgreen,
+    backgroundColor: colors().green,
     color: colors().white,
     padding: "2rem 0",
 

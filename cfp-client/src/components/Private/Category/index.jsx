@@ -1,5 +1,5 @@
 import { MdDelete, MdEdit } from "react-icons/md";
-import { useCategory } from "../../../hooks/private";
+import { useCategory } from "../../../hooks/private/useCategory";
 import Button from "../../../shared/utils/Button";
 import { ParagraphContainer } from "../../../shared/utils/Paragraph/style";
 import { SubTitleContainer } from "../../../shared/utils/SubTitle/style";

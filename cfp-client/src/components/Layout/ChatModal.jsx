@@ -1,4 +1,4 @@
-import { useChatModal } from "../../hooks/layout"
+import { useChatModal } from "../../hooks/layout/useChatModal"
 
 const ChatModal = ({ isOpen, onClose, isLoggedIn }) => {
   const {
@@ -21,8 +21,8 @@ const ChatModal = ({ isOpen, onClose, isLoggedIn }) => {
         <div className="flex border-b mb-4">
           <button
             className={`px-4 py-2 ${activeTab === "support"
-                ? "border-b-2 border-green-600 text-green-600"
-                : ""
+              ? "border-b-2 border-green-600 text-green-600"
+              : ""
               }`}
             onClick={() => setActiveTab("support")}
           >
@@ -32,8 +32,8 @@ const ChatModal = ({ isOpen, onClose, isLoggedIn }) => {
           {isLoggedIn && (
             <button
               className={`px-4 py-2 ml-2 ${activeTab === "ia"
-                  ? "border-b-2 border-green-600 text-green-600"
-                  : ""
+                ? "border-b-2 border-green-600 text-green-600"
+                : ""
                 }`}
               onClick={() => setActiveTab("ia")}
             >

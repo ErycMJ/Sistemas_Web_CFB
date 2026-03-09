@@ -1,5 +1,5 @@
 import { Link, Navigate } from "react-router-dom";
-import { useSignIn } from "../../../hooks/auth";
+import { useSignIn } from "../../../hooks/auth/useSignIn";
 import Button from "../../../shared/utils/Button";
 import { ParagraphContainer } from "../../../shared/utils/Paragraph/style";
 import { TitleContainer } from "../../../shared/utils/Title/style";

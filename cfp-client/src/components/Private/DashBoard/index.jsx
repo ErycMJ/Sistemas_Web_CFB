@@ -13,7 +13,7 @@ import {
   YAxis,
   CartesianGrid,
 } from "recharts";
-import { useDashboard } from "../../../hooks/private";
+import { useDashboard } from "../../../hooks/private/useDashboard";
 import { ParagraphContainer } from "../../../shared/utils/Paragraph/style";
 import { SubTitleContainer } from "../../../shared/utils/SubTitle/style";
 import { TitleContainer } from "../../../shared/utils/Title/style";

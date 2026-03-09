@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import { CgProfile } from "react-icons/cg"
 import { TbLogout } from "react-icons/tb"
 import { FaBell } from 'react-icons/fa';
-import { useHeader } from "../../../hooks/layout"
+import { useHeader } from "../../../hooks/layout/useHeader"
 import Button from "../../../shared/utils/Button/index"
 
 export default function Header() {

@@ -4,7 +4,7 @@ import {
   RECURRENCE_OPTIONS,
   TRANSACTION_TYPE_OPTIONS,
 } from "./transactionDefaults"
-import { useTransactionModal } from "../../hooks/private"
+import { useTransactionModal } from "../../hooks/private/useTransactionModal"
 
 const TransactionModal = () => {
   const {
